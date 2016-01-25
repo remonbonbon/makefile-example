@@ -21,7 +21,6 @@ run: all
 depend:
 	$(CXX) $(CXXFLAGS) -MM $(SRCS) > $(DEPS)
 	@sed -i -E "s/^(.+?).o: ([^ ]+?)\1/\2\1.o: \2\1/g" $(DEPS)
-	cat $(DEPS)
 
 clean:
 	$(RM) $(OBJS) $(TARGET)
