@@ -8,15 +8,12 @@ $ make clean
 rm -f ./src/main.o ./src/mod/mod.o app
 
 $ make depend
-g++ -O2 -Wall -I./include -MM ./src/main.cpp ./src/mod/mod.cpp > Makefile.depend
-cat Makefile.depend
-src/main.o: src/main.cpp include/main.h include/mod/mod.h
-src/mod/mod.o: src/mod/mod.cpp include/mod/mod.h
+g++ -I./include -MM ./src/main.cpp ./src/mod/mod.cpp > Makefile.depend
 
 $ make
 g++ -O2 -Wall -I./include   -c -o src/main.o src/main.cpp
 g++ -O2 -Wall -I./include   -c -o src/mod/mod.o src/mod/mod.cpp
-g++ -O2 -Wall -I./include -o app ./src/main.o ./src/mod/mod.o
+g++ -lm -o app ./src/main.o ./src/mod/mod.o
 
 $ make run
 Hello, world!
@@ -35,7 +32,7 @@ SRCS = $(shell find ./src -type f -name *.cpp)
 ### Resolve dependencies by gcc `-MM` option
 
 ~~~
-$ gcc -I./include -MM ./src/main.cpp ./src/mod/mod.cpp
+$ g++ -I./include -MM ./src/main.cpp ./src/mod/mod.cpp
 main.o: src/main.cpp include/main.h include/mod/mod.h
 mod.o: src/mod/mod.cpp include/mod/mod.h
 ~~~
