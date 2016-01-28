@@ -45,4 +45,4 @@ src/main.o: src/main.cpp include/main.h include/mod/mod.h
 src/mod/mod.o: src/mod/mod.cpp include/mod/mod.h
 ~~~
 
-Makefile includes this for incremental build.
+Makefile includes this result for incremental build.
