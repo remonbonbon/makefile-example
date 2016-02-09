@@ -50,7 +50,7 @@ Makefile includes this result for incremental build.
 ### Parallel compilation by gcc `-j` option
 `-j<max number of parallel job>`
 
-You should use the same number as the number of CPU cores.
+It's better to use the same number as the number of CPU cores.
 ;If 4 cores, run `make -j4`
 
 This option requires dependency chain in Makefile.
