@@ -10,7 +10,7 @@ rm -f ./src/main.o ./src/mod/mod.o app
 $ make depend
 g++ -I./include -MM ./src/main.cpp ./src/mod/mod.cpp > Makefile.depend
 
-$ make
+$ make -j4
 g++ -O2 -Wall -I./include   -c -o src/main.o src/main.cpp
 g++ -O2 -Wall -I./include   -c -o src/mod/mod.o src/mod/mod.cpp
 g++ -lm -o app ./src/main.o ./src/mod/mod.o
@@ -46,3 +46,17 @@ src/mod/mod.o: src/mod/mod.cpp include/mod/mod.h
 ~~~
 
 Makefile includes this result for incremental build.
+
+### Parallel compilation by gcc `-j` option
+`-j<max number of parallel job>`
+
+You should use the same number as the number of CPU cores.
+;If 4 cores, run `make -j4`
+
+This option requires dependency chain in Makefile.
+For example, you should run following when clean and build.
+
+~~~
+$ make clean -s && make -j4
+~~~
+
