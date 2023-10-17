@@ -22,7 +22,7 @@ Hello, world!
 
 ## tips
 
-### List the source files
+### List of the source files
 Use find command in order to list recursively.
 
 ~~~
